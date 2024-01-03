@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.top {
+  text-align: center;
+  font-size: 60px;
+}
+
+.clock {
+  height: 300px;
+  text-align: center;
+}
+
+.bottom {
+  text-align: center;
+  font-size: 60px;
+  transform-origin: center;
+  position: relative;
+
+  /*animation: 0.2s linear 0s infinite normal none paused vibrate;*/
+}
+#time-left {
+  position: relative;
+}
+.smoke-img {
+  position: absolute;
+  opacity: 0;
+  top: 0%;
+  left: 0%;
+  transform: translateY(calc(-100% + 1em));
+  height: 200%;
+  width: 100%;
+  z-index: -1;
+}
+
+/*@keyframes vibrate {
+  0% {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(1deg) translate(1px, 2px);
+  }
+  67% {
+    transform: rotate(-1deg) translate(0px, -3px);
+  }
+  100% {
+    transform: rotate(0deg) translate(-2px, 0px);
+  }  
+}*/
+

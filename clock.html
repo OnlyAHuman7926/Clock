@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="clock.css">
+  <title>考试时钟</title>
+</head>
+
+<body>
+  <div class='top'>
+    现在时间：
+    <span id="now"></span>
+  </div>
+  <div class="clock">
+    <canvas id="clock"></canvas>
+  </div>
+  <div style="text-align: center;" class="wrap">
+    <span class="bottom">
+      <span id="time-left">剩余时间：00:00:00</span>
+      <img src="https://replit.com/public/images/smoke.gif" alt="香烟" class="smoke-img nodrag">
+    </span>
+  </div>
+  <script src="confetti.js"></script>
+  <script src="script.js"></script>
+  <script src="antidrag.js"></script>
+
+
+</body>
+
+</html>
