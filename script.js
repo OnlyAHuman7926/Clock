@@ -89,19 +89,26 @@ function setTime(time) {
 
 }
 function setDifference(d, inTest) {
-  document.querySelector(".valuebar").style.height = 
+  document.querySelector(".valuebar").style.height =
     Math.min(100 - d / difference * 100, 100) + '%';
   let showMs = false;
   let radius = 5;
   if (d < 600000 && d > 0 && inTest) {
     timeLeftDisplay.style.color = "red";
     let thing = document.getElementsByClassName('wrap')[0];
+    let top = document.querySelector('.top');
+    let clock = document.querySelector('.clock');
     //    document.getElementsByClassName("bottom")[0].style.animation = "0.2s linear 0s infinite normal none running vibrate";
     let angle = Math.random() * 2 * Math.PI;
     let x = radius * Math.cos(angle);
     let y = radius * Math.sin(angle);
-    document.body.style.transform = document.body.style.mozTransform =
-      `translate(${x}px, ${y}px)`;
+    let rotate = Math.random() * 2 - 1;
+    thing.style.transform = thing.style.mozTransform =
+      `translate(${x}px, ${y}px) rotate(${rotate}deg)`;
+    top.style.transform = top.style.mozTransform =
+      `translate(${x}px, ${y}px) rotate(${rotate}deg)`;
+    clock.style.transform = clock.style.mozTransform =
+      `translate(${x}px, ${y}px) rotate(${rotate}deg)`;
     showMs = true;
     document.querySelector(".smoke-img").style.opacity = -d / 1e6 + 1;
   }
@@ -142,7 +149,7 @@ function parseTime(h, m, s, ms, showMs = false) {
   let mstring = m > 0 ? m < 10 && hstring != "" ? "0" + m + ":" : m + ":" : "";
   let sstring = s < 10 && mstring != "" ? "0" + s : s;
   let msstring = "." + (ms < 10 ? "00" + ms : ms < 100 ? "0" + ms : ms);
-  return hstring + mstring + sstring + msstring;
+  return hstring + mstring + sstring + (showMs ? msstring : "");
 }
 function r(a, b) {
   return Math.floor(Math.random() * (b - a + 1)) + a;
