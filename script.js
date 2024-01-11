@@ -4,6 +4,7 @@ let startingTime = currentUrl.searchParams.get("startTime"),
 
 startingTime = new Date(+startingTime);
 endingTime = new Date(+endingTime);
+const difference = endingTime - startingTime;
 const a = {
   hour: endingTime.getHours(),
   min: endingTime.getMinutes(),
@@ -88,13 +89,19 @@ function setTime(time) {
 
 }
 function setDifference(d, inTest) {
+  document.querySelector(".valuebar").style.height = 
+    Math.min(100 - d / difference * 100, 100) + '%';
   let showMs = false;
+  let radius = 5;
   if (d < 600000 && d > 0 && inTest) {
     timeLeftDisplay.style.color = "red";
     let thing = document.getElementsByClassName('wrap')[0];
     //    document.getElementsByClassName("bottom")[0].style.animation = "0.2s linear 0s infinite normal none running vibrate";
-    thing.style.transform = thing.style.mozTransform =
-      `translate(${r(-3, 3)}px, ${r(-3, 3)}px) rotate(${r(-1, 1)}deg)`;
+    let angle = Math.random() * 2 * Math.PI;
+    let x = radius * Math.cos(angle);
+    let y = radius * Math.sin(angle);
+    document.body.style.transform = document.body.style.mozTransform =
+      `translate(${x}px, ${y}px)`;
     showMs = true;
     document.querySelector(".smoke-img").style.opacity = -d / 1e6 + 1;
   }
@@ -131,11 +138,11 @@ function parseTimeFromNumber(n, showMs = false) {
 
 }
 function parseTime(h, m, s, ms, showMs = false) {
-  return (h > 0 ? h + ":" : "") +
-    (m < 10 ? "0" + m : m) + ":" +
-    (s < 10 ? "0" + s : s) +
-    (!showMs ? "" : ("." +
-      (ms < 10 ? "00" + ms : ms < 100 ? "0" + ms : ms)));
+  let hstring = h > 0 ? h + ":" : "";
+  let mstring = m > 0 ? m < 10 && hstring != "" ? "0" + m + ":" : m + ":" : "";
+  let sstring = s < 10 && mstring != "" ? "0" + s : s;
+  let msstring = "." + (ms < 10 ? "00" + ms : ms < 100 ? "0" + ms : ms);
+  return hstring + mstring + sstring + msstring;
 }
 function r(a, b) {
   return Math.floor(Math.random() * (b - a + 1)) + a;
