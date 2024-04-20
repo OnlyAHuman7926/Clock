@@ -146,8 +146,16 @@ function parseTimeFromNumber(n, showMs = false) {
 }
 function parseTime(h, m, s, ms, showMs = false) {
   let hstring = h > 0 ? h + ":" : "";
-  let mstring = m > 0 ? m < 10 && hstring != "" ? "0" + m + ":" : m + ":" : "";
+  //let mstring = m > 0 ? m < 10 && hstring != "" ? "0" + m + ":" : m + ":" : "";
+  let mstring = "";
+  if (hstring && m < 10) mstring += "0";
+  if (m > 0 || mstring != '') {
+    mstring += m;
+    mstring += ':';
+  }
+
   let sstring = s < 10 && mstring != "" ? "0" + s : s;
+
   let msstring = "." + (ms < 10 ? "00" + ms : ms < 100 ? "0" + ms : ms);
   return hstring + mstring + sstring + (showMs ? msstring : "");
 }
