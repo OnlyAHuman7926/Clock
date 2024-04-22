@@ -14,7 +14,7 @@ window.addIns = {
   },
   matrix() {
     document.body.style.transform += 'matrix(1, 0, -0.5, calc(sqrt(3) / 2), 0, 0)';
-  }
+  },
   all(time) {
     this.init(time);
     for (let f in this) {
