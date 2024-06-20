@@ -12,7 +12,7 @@ requestAnimationFrame(function f() {
   let d = (now - prev) / 1000;
   prev = now;
 
-  accel = [accel[0] + (Math.random() * 2 - 1) * 0.01, accel[1] + (Math.random() * 2 - 1) * 0.01];
+  accel = [accel[0] + (Math.random() * 2 - 1) * 0.04, accel[1] + (Math.random() * 2 - 1) * 0.04];
   v = [v[0] + d * accel[0], v[1] + d * accel[1]];
   startHue += d * v[0];
   endHue += d * v[1];
