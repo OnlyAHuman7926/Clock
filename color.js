@@ -78,6 +78,5 @@ requestAnimationFrame(function f() {
   document.querySelector(".sidebar").style.background = `linear-gradient(180deg, 
   hsl(${initial + motion.vals[0]}, 100%, 80%), 
   hsl(${initial + motion2.vals[0] + offset}, 100%, 60%)`;
-  console.log(motion.vals[1].toFixed(2), motion.vals[2].toFixed(2), motion2.vals[1].toFixed(2), motion2.vals[2].toFixed(2));
   requestAnimationFrame(f);
 })
