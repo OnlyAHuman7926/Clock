@@ -13,7 +13,7 @@ body {
 
 .top {
   text-align: center;
-  font-size: 60px;
+  font-size: 4em;
 }
 
 .clock {
@@ -23,7 +23,7 @@ body {
 
 .bottom {
   text-align: center;
-  font-size: 60px;
+  font-size: 4em;
   transform-origin: center;
   position: relative;
 
@@ -48,14 +48,29 @@ body {
 
 .sidebar {
   position: fixed;
+  box-sizing: border-box;
+}
+
+.sidebar.left {
   top: 10%;
+  height: 80%;
   left: 52px;
   width: 40px;
-  height: 80%;
   border: 2px solid black;
   border-radius: 5px;
-  box-sizing: border-box;
   background: linear-gradient(180deg, #009ef7, #8aaaff, #fa8cff);
+}
+
+.sidebar.right {
+  right: 52px;
+  top: 50%;
+  height: 60%;
+  transform: translateY(-50%);
+  font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
 }
 
 .valuebar {

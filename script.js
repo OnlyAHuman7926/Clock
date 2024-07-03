@@ -1,7 +1,10 @@
 const currentUrl = new URL(window.location.href);
 let startingTime = currentUrl.searchParams.get("startTime"),
   endingTime = currentUrl.searchParams.get("finishTime");
-
+let ststr = parseTimeString(startingTime),
+  etstr = parseTimeString(endingTime);
+document.getElementById("time-start").innerHTML = ststr.slice(0, ststr.indexOf(":", ststr.indexOf(":") + 1));
+document.getElementById("time-end").innerHTML = etstr.slice(0, etstr.indexOf(":", etstr.indexOf(":") + 1));
 startingTime = new Date(+startingTime);
 endingTime = new Date(+endingTime);
 const difference = endingTime - startingTime;
@@ -137,10 +140,15 @@ function parseTimeString(d, showMs = false) {
   return parseTimeFromNumber(+d, showMs);
 }
 function parseTimeFromNumber(n, showMs = false) {
-  let hour = Math.floor((n % 86400000) / 3600000),
+  let d = new Date(n);
+  /*let hour = Math.floor((n % 86400000) / 3600000),
     min = Math.floor((n % 3600000) / 60000),
     sec = Math.floor((n % 60000) / 1000),
-    milsec = n % 1000;
+    milsec = n % 1000;*/
+  let hour = d.getHours(),
+    min = d.getMinutes(),
+    sec = d.getSeconds(),
+    milsec = d.getMilliseconds();
   return parseTime(hour, min, sec, milsec, showMs);
 
 }
