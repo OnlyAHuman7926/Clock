@@ -3,8 +3,10 @@ let startingTime = currentUrl.searchParams.get("startTime"),
   endingTime = currentUrl.searchParams.get("finishTime");
 let ststr = parseTimeString(startingTime),
   etstr = parseTimeString(endingTime);
-document.getElementById("time-start").innerHTML = ststr.slice(0, ststr.indexOf(":", ststr.indexOf(":") + 1));
-document.getElementById("time-end").innerHTML = etstr.slice(0, etstr.indexOf(":", etstr.indexOf(":") + 1));
+document.getElementById("time-start").innerHTML =
+  window.sl["start-time"].format(ststr.slice(0, ststr.indexOf(":", ststr.indexOf(":") + 1)));
+document.getElementById("time-end").innerHTML =
+  window.sl["end-time"].format(etstr.slice(0, etstr.indexOf(":", etstr.indexOf(":") + 1)));
 startingTime = new Date(+startingTime);
 endingTime = new Date(+endingTime);
 const difference = endingTime - startingTime;
@@ -45,7 +47,7 @@ function setTime(time) {
     min = time.getMinutes(),
     sec = time.getSeconds(),
     milsec = time.getMilliseconds();
-  nowDisplay.innerHTML = parseTime(hour, min, sec, milsec);
+  nowDisplay.innerHTML = window.sl["time-now"].format(parseTime(hour, min, sec, milsec));
 
   ctx.clearRect(0, 0, 300, 300);
   ctx.lineWidth = 1;
@@ -116,7 +118,7 @@ function setDifference(d, inTest) {
     document.querySelector(".smoke-img").style.opacity = -d / 1e6 + 1;
   }
   if (d < 0) {
-    timeLeftDisplay.innerHTML = "考试已结束！"
+    timeLeftDisplay.innerHTML = window.sl["test-end"];
     timeLeftDisplay.style.color = "red";
     if (!confettiDone) {
       confettiDone = true;
@@ -129,26 +131,31 @@ function setDifference(d, inTest) {
     document.querySelector(".smoke-img").style.opacity = 0;
   } else {
     if (inTest) {
-      timeLeftDisplay.innerHTML = "剩余时间：" + parseTimeString(d, showMs);
+      timeLeftDisplay.innerHTML = window.sl["time-remaining"].format(parseTimeFromNumber(d, showMs));
     } else {
-      timeLeftDisplay.innerHTML = "考试未开始";
+      timeLeftDisplay.innerHTML = window.sl["test-not-start"];
     }
   }
 }
 
 function parseTimeString(d, showMs = false) {
-  return parseTimeFromNumber(+d, showMs);
+  let date = new Date(+d);
+  let hour = date.getHours(),
+    min = date.getMinutes(),
+    sec = date.getSeconds(),
+    milsec = date.getMilliseconds();
+  return parseTime(hour, min, sec, milsec, showMs);
 }
 function parseTimeFromNumber(n, showMs = false) {
   let d = new Date(n);
-  /*let hour = Math.floor((n % 86400000) / 3600000),
+  let hour = Math.floor((n % 86400000) / 3600000),
     min = Math.floor((n % 3600000) / 60000),
     sec = Math.floor((n % 60000) / 1000),
-    milsec = n % 1000;*/
-  let hour = d.getHours(),
+    milsec = n % 1000;
+  /* let hour = d.getHours(),
     min = d.getMinutes(),
     sec = d.getSeconds(),
-    milsec = d.getMilliseconds();
+    milsec = d.getMilliseconds(); */
   return parseTime(hour, min, sec, milsec, showMs);
 
 }

@@ -6,28 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="clock.css">
   <title>考试时钟</title>
+  <script src="lang.js"></script>
 </head>
 
 <body>
-  <div class='top'>
-    现在时间：
-    <span id="now"></span>
-  </div>
-  <div class="clock">
-    <canvas id="clock"></canvas>
-  </div>
-  <div style="text-align: center;" class="wrap">
-    <span class="bottom">
-      <span id="time-left">剩余时间：00:00:00</span>
-      <img src="https://replit.com/public/images/smoke.gif" alt="香烟" class="smoke-img nodrag">
-    </span>
+  <div class="main">
+    <div class='top' id="now">
+      现在时间：
+    </div>
+    <div class="clock">
+      <canvas id="clock"></canvas>
+    </div>
+    <div style="text-align: center;" class="wrap">
+      <span class="bottom">
+        <span id="time-left">剩余时间：00:00:00</span>
+        <img src="https://replit.com/public/images/smoke.gif" alt="香烟" class="smoke-img nodrag">
+      </span>
+    </div>
   </div>
   <div class="sidebar left">
     <div class="valuebar"></div>
   </div>
   <div class="sidebar right">
-    <div>开始：<span id="time-start">aaa</span></div>
-    <div>结束：<span id="time-end">bbb</span></div>
+    <div id="time-start">开始：</div>
+    <div id="time-end">结束：</div>
   </div>
   <script src="confetti.js"></script>
   <script src="script.js"></script>
