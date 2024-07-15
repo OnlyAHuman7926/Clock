@@ -11,7 +11,8 @@ window.l = {
     "test-not-start": "考试未开始",
     "test-end": "考试已结束！",
     "start-time": "开始：{0}",
-    "end-time": "结束：{0}"
+    "end-time": "结束：{0}",
+    "new-site": "请收藏我们的新网址："
   },
   "zh-TW": {
     "enter-start-time": "請輸入考試開始時間",
@@ -39,7 +40,8 @@ window.l = {
     "test-not-start": "Test has not started",
     "test-end": "Test has ended!",
     "start-time": "Start time: {0}",
-    "end-time": "End time: {0}"
+    "end-time": "End time: {0}",
+    "new-site": "Please save our new website: "
   },
   "es": {
     "enter-start-time": "Por favor ingrese el tiempo de inicio del examen",
